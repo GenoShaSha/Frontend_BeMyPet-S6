@@ -1,0 +1,40 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #5d5b8d;
+}
+
+li {
+  float: left;
+}
+
+ul {
+  display: flex  !important;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration:none;
+  justify-content: space-around;
+
+}
+
+li a:hover {
+  color: #d3ab9e;
+  font-weight: bold;
+  // text-decoration: underline#d3ab9e;
+}
+
+.ml-auto{
+  padding: 10px;
+}
+
+
+.NavButtons {
+  padding-left: 75%;
+}
