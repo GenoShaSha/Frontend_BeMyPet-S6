@@ -1,14 +1,15 @@
-import jwtDecode from 'jwt-decode';
-import React from 'react';
+import React from "react";
+import "../Css/home.scss";
+
+
 function Home() {
-  var token = localStorage.getItem("token")
-  var decoded = jwtDecode(token)
-  console.log(decoded.id)
   return (
     <div className='home'>
-        asdasdasd
+      <img src="img4" alt="" />
+<p> Welcome to BE MY PET website!</p>
+<p> if you wish to register as a shelter please contact our email at: shelter@bemypet.nl </p>
+<p> else you can click the button bellow to sign up.</p>
     </div>
   );
-}
-
+  }
 export default Home;

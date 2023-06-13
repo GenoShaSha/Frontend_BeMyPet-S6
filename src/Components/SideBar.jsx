@@ -72,9 +72,6 @@ class SideBar extends Component {
             ) : (
               <>
                 <NavItem>
-                  <NavLink href="/MyProfile">My Profile</NavLink>
-                </NavItem>
-                <NavItem>
                   <NavLink href="/SignOut">Sign Out</NavLink>
                 </NavItem>
               </>
