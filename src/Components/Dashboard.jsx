@@ -65,22 +65,7 @@ class Dashboard extends Component {
     var token = localStorage.getItem("token");
     var decoded = jwt_decode(token);
     var tok = localStorage.getItem("token");
-    console.log(
-      "shelterid:", shelterid,
-      "decoded.id:", decoded.id,
-      "pic:", pic,
-      "fName:", fName,
-      "lName:", lName,
-      "dob:", dob,
-      "gen:", gen,
-      "type:", type,
-      "breed:", breed,
-      "shelter:", shelter,
-      "adrs:", adrs,
-      "pcode:", pcode,
-      "bio:", bio,
-      "this.state.status:", this.state.status,
-    )
+
     axios.post("http://134.209.136.146:8000/makematch", {
         shelterID: shelterid,
         adopterID: decoded.id,
