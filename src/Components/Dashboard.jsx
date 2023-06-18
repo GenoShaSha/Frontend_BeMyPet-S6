@@ -39,7 +39,14 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const timestamp = new Date().getTime();
-    axios
+    const token = localStorage.getItem("token"); // Get the JWT token from localStorage
+    const axiosInstance = axios.create({
+      // Set the default headers with Authorization
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    axiosInstance
       .get(`http://134.209.136.146:8000/animals?timestamp=${timestamp}`)
       .then((response) => {
         this.setState({
@@ -50,6 +57,7 @@ class Dashboard extends Component {
   }
 
   saveMatch = (
+    animalid,
     shelterid,
     pic,
     fName,
@@ -61,12 +69,20 @@ class Dashboard extends Component {
     shelter,
     adrs,
     pcode,
-    bio) => {
+    bio
+  ) => {
     var token = localStorage.getItem("token");
     var decoded = jwt_decode(token);
     var tok = localStorage.getItem("token");
-
-    axios.post("http://134.209.136.146:8000/makematch", {
+    const axiosInstance = axios.create({
+      // Set the default headers with Authorization
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    axiosInstance
+      .post("http://134.209.136.146:8000/makematch", {
+        animalId: animalid,
         shelterID: shelterid,
         adopterID: decoded.id,
         picture: pic,
@@ -86,7 +102,7 @@ class Dashboard extends Component {
       .then(
         (response) => {
           console.log(response);
-          alert("You have liked that animal!")
+          alert("You have liked that animal!");
         },
         (error) => {
           console.log(error);
@@ -123,6 +139,7 @@ class Dashboard extends Component {
                     style={{ marginRight: "10px" }}
                     onClick={() =>
                       this.saveMatch(
+                        animal.animal_id,
                         animal.user_id,
                         animal.picture,
                         animal.first_name,
@@ -134,7 +151,7 @@ class Dashboard extends Component {
                         animal.shelter,
                         animal.address,
                         animal.postal_code,
-                        animal.bio,
+                        animal.bio
                       )
                     }
                   >

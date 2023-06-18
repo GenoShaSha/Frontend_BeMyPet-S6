@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('ApproveDeny', async ({ page }) => {
-  await page.goto('http://localhost:3000/');
+  await page.goto('https://frontend-be-my-pet-genoshasha.vercel.app/');
   await page.getByRole('link', { name: 'Sign In' }).click();
   await page.getByPlaceholder('Email').click();
   await page.getByPlaceholder('Email').fill('admin@gmail.com');
@@ -16,7 +16,7 @@ test('ApproveDeny', async ({ page }) => {
 });
 
 test('SignIn', async ({ page }) => {
-  await page.goto('http://localhost:3000/');
+  await page.goto('https://frontend-be-my-pet-genoshasha.vercel.app/');
   await page.getByRole('link', { name: 'Sign Up' }).click();
   await page.getByRole('link', { name: 'Sign In' }).click();
   await page.getByPlaceholder('Email').click();

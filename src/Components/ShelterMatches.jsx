@@ -148,7 +148,13 @@ export default function ShelterMatches() {
     async function postShelter() {
       var token = localStorage.getItem("token");
       var decoded = jwtDecode(token);
-      axios
+      const axiosInstance = axios.create({
+        // Set the default headers with Authorization
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      axiosInstance
         .post(`http://134.209.136.146:8000/getsheltermatches`, {
           shelter_id: decoded.id,
         })
@@ -162,7 +168,14 @@ export default function ShelterMatches() {
   });
 
   function approve(dmatchid) {
-    axios
+    var token = localStorage.getItem("token");
+    const axiosInstance = axios.create({
+      // Set the default headers with Authorization
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    axiosInstance
       .put("http://134.209.136.146:8000/updatematch", {
         id: dmatchid,
         status: "APPROVED",
@@ -181,7 +194,15 @@ export default function ShelterMatches() {
 
   function deny(dmatchid) {
     console.log(dmatchid);
-    axios
+    var token = localStorage.getItem("token");
+    const axiosInstance = axios.create({
+      // Set the default headers with Authorization
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    axiosInstance
+
       .put("http://134.209.136.146:8000/updatematch", {
         id: dmatchid,
         status: "DENIED",
